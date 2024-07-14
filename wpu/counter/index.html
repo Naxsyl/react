@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // Cara Pertama
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      function Header({ name }) {
+        return <h1>Belajar React Bareng {name ? name : "wpu"} 🚀</h1>;
+      }
+
+      function HomePage() {
+        const students = ["Nasril", "Bela", "Raya"];
+        const [likes, setLikes] = React.useState(0);
+
+        function handleClick() {
+          setLikes(likes + 1);
+        }
+
+        function Tombol({ title }) {
+          if (angka == 10 || angka < 0) {
+            return (
+              <button onClick={title == "-" ? Kurang : Tambah} disabled>
+                {title ? title : ""}
+              </button>
+            );
+          } else {
+            return (
+              <button onClick={title == "-" ? Kurang : Tambah}>
+                {title ? title : ""}
+              </button>
+            );
+          }
+        }
+
+        function Tambah() {
+          setAngka(angka + 1);
+        }
+
+        function Kurang() {
+          setAngka(angka - 1);
+        }
+
+        function Reset() {
+          setAngka(0);
+        }
+
+        function ResetBtn() {
+          if (angka == 10 || angka < 0) {
+            return <button onClick={Reset}>Reset</button>;
+          } else {
+            return (
+              <button onClick={Reset} disabled>
+                Reset
+              </button>
+            );
+          }
+        }
+
+        const [angka, setAngka] = React.useState(0);
+
+        return (
+          <>
+            <Header />
+            <Header name="Naxsyl" />
+            <ul>
+              {students.map((student) => (
+                <li key={student}>{student}</li>
+              ))}
+            </ul>
+            <button onClick={handleClick}>Like ❤️({likes})</button> <br />
+            <Tombol title="-" />
+            <span>{angka == 10 || angka < 0 ? "done!" : angka}</span>
+            <Tombol title="+" />
+            <br />
+            <ResetBtn />
+          </>
+        );
+      }
+
+      root.render(<HomePage />);
+
+      // Cara ke 2
+      // const container = document.getElementById('root');
+      // const root = ReactDOM.createRoot(container);
+
+      // function MyButton({ text, onClick, counter }) {
+
+      //   const myStyle = (text !== 'Reset!') ? {} : {margin: 20, display: 'block'};
+
+      //   return (
+      //     <button onClick={onClick} style={myStyle}>
+      //       {text}
+      //     </button>
+      //   );
+      // }
+
+      // function MyCounter({counter}) {
+      //   return (
+      //     <span style={{ margin: 20 }}>{counter}</span>
+      //   )
+      // }
+
+      // function HomePage() {
+      //   const [counter, setCounter] = React.useState(0);
+
+      //   function increment() {
+      //     setCounter(counter + 1);
+      //   }
+
+      //   function decrement() {
+      //     setCounter(counter - 1);
+      //   }
+
+      //   function reset() {
+      //     setCounter(0);
+      //   }
+
+      //   return (
+      //     <div>
+      //       <MyButton text={'-'} onClick={decrement} counter={counter} />
+      //       <MyCounter counter={counter} />
+      //       <MyButton text={'+'} onClick={increment} counter={counter} />
+      //       <MyButton text={'Reset!'} onClick={reset} counter={counter} />
+      //     </div>
+      //   );
+      // }
+
+      // root.render(<HomePage />);
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this page for starting a new React project with JSX:
+      https://react.dev/learn/start-a-new-react-project
+
+      Read this page for adding React with JSX to an existing project:
+      https://react.dev/learn/add-react-to-an-existing-project
+    -->
+  </body>
+</html>
