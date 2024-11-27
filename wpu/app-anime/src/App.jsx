@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, Children } from "react";
 import "./App.css";
-import { Children } from "react";
 
 const animesData = [
   {
